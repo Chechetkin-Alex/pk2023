@@ -195,30 +195,34 @@
 \begin{problem}
     Есть односвязный список, состоящий из различных значений. 
     Возможно в нем есть цикл. Опиши алгоритм, который находит
-    начало этого цикла, а если цикла нет --- выводит \textit{-1}.
+    начало этого цикла, а если цикла нет --- выводит $-1$.
 
-    \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
-        node distance=2.5cm, thick,
-        main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+    \begin{figure}[h]
+        \centering
 
-    % Nodes
-    \node[main node] (1) {1};
-    \node[main node] (2) [right of=1] {4};
-    \node[main node] (3) [right of=2] {2};
-    \node[main node] (4) [right of=0.5cm of 3, above of=3] {3};
-    \node[main node] (5) [right of=4, below of=4] {5};
-    \node[main node] (6) [below of=4, below of=4] {6};
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
+            node distance=2.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
 
-    % Edges
-    \path[every node/.style={font=\sffamily\small}]
-    (1) edge (2)
-    (2) edge (3)
-    (3) edge (4)
-    (4) edge (5)
-    (5) edge (6)
-    (6) edge (3);
+        % Nodes
+        \node[main node] (1) {1};
+        \node[main node] (2) [right of=1] {4};
+        \node[main node] (3) [right of=2] {2};
+        \node[main node] (4) [right of=0.5cm of 3, above=0.75cm of 3] {3};
+        \node[main node] (5) [right of=0.5cm of 4, below=0.75cm of 4] {5};
+        \node[main node] (6) [right of=0.5cm of 3, below=0.75cm of 3] {6};
 
-    \end{tikzpicture}
+        % Edges
+        \path[every node/.style={font=\sffamily\small}]
+        (1) edge (2)
+        (2) edge (3)
+        (3) edge (4)
+        (4) edge (5)
+        (5) edge (6)
+        (6) edge (3);
+
+        \end{tikzpicture}
+    \end{figure}
 \end{problem}
 
 \begin{problem}
@@ -293,7 +297,7 @@
 \begin{problem}
     Решить $3\sqrt{4x - 5y + 7} +
     5|3x - 4y + 6| \leqslant 4$, где $x, y \in \Z$.
-    В ответе указать $max(x+y)$.
+    В ответе указать $\max(x+y)$.
 \end{problem}
 
 \begin{problem}
@@ -322,8 +326,8 @@
 \end{problem}
 
 \begin{problem}
-    Существует ли такой $x$, что $tg(x) + \sqrt{3}$ и 
-    $ctg(x) + \sqrt{3}$ целые числа?
+    Существует ли такой $x$, что $\tg(x) + \sqrt{3}$ и 
+    $\ctg(x) + \sqrt{3}$ целые числа?
 \end{problem}
 
 \begin{problem}
@@ -347,21 +351,59 @@
 \end{problem}
 
 \begin{problem}
-    \begin{multicols}{2}
+    \begin{multicols*}{2}
         Из 9 аксиом поля действительных чисел вывести следующее:
-        \renewcommand{\labelenumi}{\alph{enumi})}
-        \begin{enumerate}
-        \item $\forall a \in \R \ \exists ! \; (-a)\in \R : a + (-a) = 0;$
-        
-        \item $\forall a \in \R : \ a \cdot 0 = 0;$
-        
-        \item $\forall a \in \R : \ (-1) \cdot a = -a.$
-        \end{enumerate}
+        {
+            \renewcommand{\labelenumi}{\alph{enumi})}
+            \singlespacing
+
+            \begin{enumerate}
+            \item $\forall a \in \R \ \exists ! \; (-a)\in \R : a + (-a) = 0;$
+            
+            \item $\forall a \in \R : \ a \cdot 0 = 0;$
+            
+            \item $\forall a \in \R : \ (-1) \cdot a = -a.$
+            \end{enumerate}
+        }
 
         \columnbreak
 
-        \includegraphics[width=0.46\textwidth]{ax.jpeg}
-      \end{multicols}
+        {
+            \renewcommand{\labelenumi}{\theenumi)}
+            \singlespacing
+            % \small
+
+            Аксиомы сложения
+            \newcounter{axiomscounter}
+            \begin{enumerate}
+                \item $\forall a, b \in \R \quad a + b = b + a$;
+                \item $\forall a, b, c \in \R \quad (a + b) + c = a + (b + c)$;
+                \item $\exists 0 \in \R \, \forall a \in \R \quad a + 0 = a$;
+                \item $\forall a \in \R \, \exists (-a) \in \R \quad a + (-a) = 0$.
+
+                \setcounter{axiomscounter}{\theenumi}
+            \end{enumerate}
+
+            Аксиомы умножения
+            \begin{enumerate}
+                \setcounter{enumi}{\theaxiomscounter}
+
+                \item $\forall a, b \in \R \quad a \cdot b = b \cdot a$;
+                \item $\forall a, b, c \in \R \quad (a \cdot b) \cdot c = a \cdot (b \cdot c)$;
+                \item $\exists 1 \in \R \, \forall a \in \R \quad a \cdot 1 = a$;
+                \item $\forall a \in \R \setminus \{0\} \, \exists a^{-1} \in \R \quad a \cdot a^{-1} = 1$.
+                \setcounter{axiomscounter}{\theenumi}
+            \end{enumerate}
+
+            Аксиома связи сложения и умножения
+            \begin{enumerate}
+                \setcounter{enumi}{\theaxiomscounter}
+                \item $\forall a, b, c \in \R \quad a \cdot (b + c) = a \cdot b + a \cdot c$.
+            \end{enumerate}
+        }
+
+        % \includegraphics[width=0.46\textwidth]{img/ax.jpeg}
+      \end{multicols*}
 \end{problem}
 
 \begin{problem}
@@ -609,7 +651,7 @@
 \end{problem}
 
 \begin{problem}
-    Пусть существуют, тогда из предположения приравниваем $tgx$ и получаем
+    Пусть существуют, тогда из предположения приравниваем $\tg x$ и получаем
     дробь, которая должна являться рациональной, однако равна $\sqrt{3}
     \Rightarrow$ противоречие.
 \end{problem}
