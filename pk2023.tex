@@ -196,34 +196,30 @@
 \begin{problem}
     Есть односвязный список, состоящий из различных значений. 
     Возможно в нем есть цикл. Опиши алгоритм, который находит
-    начало этого цикла, а если цикла нет --- выводит $-1$.
+    начало этого цикла, а если цикла нет --- выводит \textit{-1}.
 
-    \begin{figure}[h]
-        \centering
+    \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
+        node distance=2.5cm, thick,
+        main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
 
-        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
-            node distance=2.5cm, thick,
-            main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+    % Nodes
+    \node[main node] (1) {1};
+    \node[main node] (2) [right of=1] {4};
+    \node[main node] (3) [right of=2] {2};
+    \node[main node] (4) [right of=0.5cm of 3, above of=3] {3};
+    \node[main node] (5) [right of=4, below of=4] {5};
+    \node[main node] (6) [below of=4, below of=4] {6};
 
-        % Nodes
-        \node[main node] (1) {1};
-        \node[main node] (2) [right of=1] {4};
-        \node[main node] (3) [right of=2] {2};
-        \node[main node] (4) [right of=0.5cm of 3, above=0.75cm of 3] {3};
-        \node[main node] (5) [right of=0.5cm of 4, below=0.75cm of 4] {5};
-        \node[main node] (6) [right of=0.5cm of 3, below=0.75cm of 3] {6};
+    % Edges
+    \path[every node/.style={font=\sffamily\small}]
+    (1) edge (2)
+    (2) edge (3)
+    (3) edge (4)
+    (4) edge (5)
+    (5) edge (6)
+    (6) edge (3);
 
-        % Edges
-        \path[every node/.style={font=\sffamily\small}]
-        (1) edge (2)
-        (2) edge (3)
-        (3) edge (4)
-        (4) edge (5)
-        (5) edge (6)
-        (6) edge (3);
-
-        \end{tikzpicture}
-    \end{figure}
+    \end{tikzpicture}
 \end{problem}
 
 \begin{problem}
@@ -298,7 +294,7 @@
 \begin{problem}
     Решить $3\sqrt{4x - 5y + 7} +
     5|3x - 4y + 6| \leqslant 4$, где $x, y \in \Z$.
-    В ответе указать $\max(x+y)$.
+    В ответе указать $max(x+y)$.
 \end{problem}
 
 \begin{problem}
@@ -352,59 +348,21 @@
 \end{problem}
 
 \begin{problem}
-    \begin{multicols*}{2}
+    \begin{multicols}{2}
         Из 9 аксиом поля действительных чисел вывести следующее:
-        {
-            \renewcommand{\labelenumi}{\alph{enumi})}
-            \singlespacing
-
-            \begin{enumerate}
-            \item $\forall a \in \R \ \exists ! \; (-a)\in \R : a + (-a) = 0;$
-            
-            \item $\forall a \in \R : \ a \cdot 0 = 0;$
-            
-            \item $\forall a \in \R : \ (-1) \cdot a = -a.$
-            \end{enumerate}
-        }
+        \renewcommand{\labelenumi}{\alph{enumi})}
+        \begin{enumerate}
+        \item $\forall a \in \R \ \exists ! \; (-a)\in \R : a + (-a) = 0;$
+        
+        \item $\forall a \in \R : \ a \cdot 0 = 0;$
+        
+        \item $\forall a \in \R : \ (-1) \cdot a = -a.$
+        \end{enumerate}
 
         \columnbreak
 
-        {
-            \renewcommand{\labelenumi}{\theenumi)}
-            \singlespacing
-            % \small
-
-            Аксиомы сложения
-            \newcounter{axiomscounter}
-            \begin{enumerate}
-                \item $\forall a, b \in \R \quad a + b = b + a$;
-                \item $\forall a, b, c \in \R \quad (a + b) + c = a + (b + c)$;
-                \item $\exists 0 \in \R \, \forall a \in \R \quad a + 0 = a$;
-                \item $\forall a \in \R \, \exists (-a) \in \R \quad a + (-a) = 0$.
-
-                \setcounter{axiomscounter}{\theenumi}
-            \end{enumerate}
-
-            Аксиомы умножения
-            \begin{enumerate}
-                \setcounter{enumi}{\theaxiomscounter}
-
-                \item $\forall a, b \in \R \quad a \cdot b = b \cdot a$;
-                \item $\forall a, b, c \in \R \quad (a \cdot b) \cdot c = a \cdot (b \cdot c)$;
-                \item $\exists 1 \in \R \, \forall a \in \R \quad a \cdot 1 = a$;
-                \item $\forall a \in \R \setminus \{0\} \, \exists a^{-1} \in \R \quad a \cdot a^{-1} = 1$.
-                \setcounter{axiomscounter}{\theenumi}
-            \end{enumerate}
-
-            Аксиома связи сложения и умножения
-            \begin{enumerate}
-                \setcounter{enumi}{\theaxiomscounter}
-                \item $\forall a, b, c \in \R \quad a \cdot (b + c) = a \cdot b + a \cdot c$.
-            \end{enumerate}
-        }
-
-        % \includegraphics[width=0.46\textwidth]{img/ax.jpeg}
-      \end{multicols*}
+        \includegraphics[width=0.46\textwidth]{ax.jpeg}
+      \end{multicols}
 \end{problem}
 
 \begin{problem}
@@ -425,6 +383,7 @@
     с топологией, порождённой евклидовой метрикой.
 \end{problem}
 
+%----------
 \newpage
 \section*{Решения}
 \subsection*{Информатика}
@@ -652,7 +611,7 @@
 \end{problem}
 
 \begin{problem}
-    Пусть существуют, тогда из предположения приравниваем $\tg x$ и получаем
+    Пусть существуют, тогда из предположения приравниваем $tgx$ и получаем
     дробь, которая должна являться рациональной, однако равна $\sqrt{3}
     \Rightarrow$ противоречие.
 \end{problem}
@@ -702,7 +661,32 @@
 \end{problem}
 
 \begin{problem}
-    затехать
+    Докажем вспомогательное неравенство (*):
+    \[(1 + x)^n = \sum_{k = 1}^{n} C_n^2 x^k 1^{n-k} \geqslant 
+    C_n^2 x^2 = \frac{n(n - 1)}{2} \cdot x^2 \geqslant 
+    \frac{n^2}{4} \cdot x^2\]
+    Последнее верно в силу оценки:
+    \[n \geqslant 2;\ n - 2 \geqslant 0;\ 2n - 2 \geqslant n;\ 
+    n - 1 \geqslant \frac{n}{2}\]
+    Само неравенство верно при $ n \in \N,\ n \geqslant 2,\ x > 0$.
+
+    Возвращаемся к задаче. Сразу базовый кейс: при $n = 1$ --- очев.
+
+    {
+        \newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{*}}}{\geqslant}}
+        Положим $\alpha_n = \sqrt[n]{n} - 1 \Rightarrow n = (1 + 
+        \alpha_n)^n \myeq \frac{n^2 \alpha_n^2}{4} \Rightarrow 1 \geqslant \frac{n \alpha_n^2}{4}$.
+    }
+
+    Отсюда явным образом  $0 \leqslant \alpha_n \leqslant \frac{2}{\sqrt{n}}$. 
+    По теореме о двух миллиционерах 
+    \[
+    \lim_{n\to\infty}{\alpha_n} = 0 \Rightarrow 0 =
+    \lim_{n\to\infty}{\sqrt[n]{n} - 1} = \lim_{n\to\infty}
+    {\sqrt[n]{n}} - 1 \Rightarrow \lim_{n\to\infty}
+    {\sqrt[n]{n}} = 1\].
+
+    \textbf{Ч.Т.Д.}
 \end{problem}
 
 \begin{problem}
@@ -723,7 +707,7 @@
 
 \begin{problem}
     \textit{За доказательство пойдет полный перебор случаев}.
-    Тут абитуру должны испугать страшные слова.
+    Тут абитуру должны испугать \textit{страшные слова}.
 
     Во-первых, нам важно, что торт выпуклый. Тогда рассмотрим первые два разреза.
     Они могут иметь 0 или одну общую точку (совпадение выкидываем).
