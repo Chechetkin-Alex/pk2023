@@ -111,7 +111,8 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\href{https://vk.com/pr0st0_sasha}{Составитель}}
+\fancyhead[R]{\href{https://vk.com/pr0st0_sasha}{Автор}}
+\fancyhead[L]{\href{https://t.me/argumentofperiapsis}{\TeXподдержка}}
 \chead{\textbf{Приемка ФПМИ 2023}}
 
 % ---------
@@ -644,7 +645,18 @@
 \end{problem}
 
 \begin{problem}
-    затехать
+    \renewcommand{\labelenumi}{\alph{enumi})}
+    \begin{enumerate}
+        \item От противного. Пусть $\exists a_1 \neq a_2$ противоположные к $a$.
+        
+        $a_1 = a_1 + 0 = a_1 + (a + a_2) = (a_1 + a) + a_2 = 0 + a_2 = a_2$.
+        Противоречие.
+        
+        \item $0 \cdot a + 0 = 0 \cdot a + (a + (-a)) = (0 \cdot a + a) + (-a) = 
+        (0 + 1) \cdot a + (-a) = a + (-a) = 0$.
+        
+        \item $(-1) \cdot a + a = (-1 + 1) \cdot a = 0 \cdot a = 0 \Rightarrow (-1) \cdot a = -a$
+    \end{enumerate}
 \end{problem}
 
 \begin{problem}
@@ -652,11 +664,35 @@
 \end{problem}
 
 \begin{problem}
-    затехать
+    Два случая:
+    \renewcommand{\labelenumi}{\alph{enumi})}
+    \begin{enumerate}
+        \item $x \in \Q$, т.е. x представим в виде несократимой дроби. 
+        
+        Начиная с какого-то $m', m!$ начнет перебивать знаменатель $x$, 
+        тогда под косинусом будет целое кол-во $\pi$, тогда косинус равен
+        $\pm 1$, а он еще в степени $2n \Rightarrow D(x) = 1$.
+
+        \item $x \not\in \Q$.
+        
+        Тогда очев $D(x) = 0$.
+    \end{enumerate}
 \end{problem}
 
 \begin{problem}
-    затехать
+    \textit{За доказательство пойдет полный перебор случаев}.
+    Тут абитуру должны испугать страшные слова.
+
+    Во-первых, нам важно, что торт выпуклый. Тогда рассмотрим первые два разреза.
+    Они могут иметь 0 или одну общую точку (совпадение выкидываем).
+
+    Если 0 (при параллельности), то можно получить 4 (все параллельны)
+    или 6 (две параллельны и 1 пересекает). 
+    
+    Если одна, то либо пересечение с обоими разрезами, 
+    тогда 6 или 7.
+
+    Рассмотрели все случаи.
 \end{problem}
 
 \end{document}
