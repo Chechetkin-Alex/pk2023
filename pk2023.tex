@@ -91,7 +91,9 @@
 \usepackage{tikz-cd}
 \usepackage{tkz-euclide}
 \usepackage{stackengine}
-\usetikzlibrary{angles, babel, quotes}
+\usetikzlibrary{arrows, angles, babel, quotes, patterns, patterns.meta, shapes.geometric}
+
+\usepackage{float} % костыль, но сорри
 
 % \usepackage{paratype}
 % \usepackage{euler}
@@ -112,10 +114,10 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\href{https://vk.com/pr0st0_sasha}{Автор}}
-\fancyhead[L]{\href{https://t.me/argumentofperiapsis}{\TeXподдержка}}
+\fancyhead[L]{\href{https://t.me/argumentofperiapsis}{\small \TeXподдержка}}
 \chead{\textbf{Приемка ФПМИ 2023}}
 
-% ---------
+\setlength{\headheight}{17pt}
 
 \DeclareRobustCommand{\divby}{%
   \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
@@ -171,7 +173,40 @@
 
     \textit{Предложить решение за линию.}
 
-    // Вставить картику с деревом
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
+            node distance=2.5cm, thick,
+            main node/.style={draw,font=\sffamily\small\bfseries},
+            edge from parent/.style={draw,->},
+            level distance=2cm,
+            level/.style={sibling distance=6cm/#1},
+            child anchor=north, scale=0.75]
+
+            \node[main node, ellipse] {-10}
+                child { node[main node, circle] {9} }
+                child {
+                    node[main node, circle] {20}
+                        child {
+                            node[main node, circle] {-3}
+                            child {
+                                node[main node, circle] {5}
+                                child { node[main node, circle] {-2} }
+                                child[missing]
+                            }
+                            child { node[main node, circle] {-4} }
+                        }
+                        child {
+                            node[main node, circle] {8}
+                            child[missing]
+                            child { node[main node, circle] {-2} }
+                        }
+                };
+
+        \end{tikzpicture}
+    \end{figure}
+
 \end{problem}
 
 \begin{problem}
@@ -190,7 +225,29 @@
     Найди площадь самого большого прямоугольника в гистограмме. 
     Помни, что этот прямоугольник должен быть на общей базовой линии.
 
-    // Вставить пример гистограммы
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,thick]
+
+            \draw (0, 0) rectangle +(2, 2);
+            \draw (2, 0) rectangle +(2, 1);
+            \draw (4, 0) rectangle +(2, 5);
+            \draw (6, 0) rectangle +(2, 6);
+            \draw (8, 0) rectangle +(2, 2);
+            \draw (10, 0) rectangle +(2, 3);
+
+            \node[font=\sffamily\large\bfseries, anchor=south] at (1, 2) {2};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (3, 1) {1};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (5, 5) {5};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (7, 6) {6};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (9, 2) {2};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (11, 3) {3};
+
+            \path[pattern={Lines[angle=45, distance={3mm/sqrt(2)}]}] (4, 0) rectangle +(4, 5);
+        \end{tikzpicture}
+
+    \end{figure}
 \end{problem}
 
 \begin{problem}
@@ -198,12 +255,12 @@
     Возможно в нем есть цикл. Опиши алгоритм, который находит
     начало этого цикла, а если цикла нет --- выводит $-1$.
 
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
 
-        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
-            node distance=2.5cm, thick,
-            main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
 
         % Nodes
         \node[main node] (1) {1};
@@ -222,6 +279,44 @@
         (5) edge (6)
         (6) edge (3);
 
+        \end{tikzpicture}
+
+        \vspace{0.5cm}
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
+
+            \begin{scope}
+                \node[main node] (1) [circle, draw] {1};
+                \node[main node] (3) [right of=1] {3};
+                \node[main node] (2) [right of=3] {2};
+                \node[main node] (null) [right of=2, color=red, ellipse] {null};
+            \end{scope}
+
+            \path[every node/.style={font=\sffamily\small}]
+            (1) edge (3)
+            (3) edge (2)
+            (2) edge (null);
+        \end{tikzpicture}
+
+        \vspace{0.5cm}
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
+
+            \begin{scope}
+                \node[main node] (1) [circle, draw] {1};
+                \node[main node] (3) [above right of=1] [circle, draw] {3};
+                \node[main node] (4) [below right of=3]  [circle, draw] {4};
+                \node[main node] (2) [below left of=4]  [circle, draw] {2};
+            \end{scope}
+
+            \draw [->] (1) -- (3);
+            \draw [->] (3) -- (4);
+            \draw [->] (4) -- (2);
+            \draw [->] (2) -- (1);
         \end{tikzpicture}
     \end{figure}
 \end{problem}
@@ -275,7 +370,6 @@
     \textit{Придумать решение за линию.}
 \end{problem}
 
-% -------
 \subsection*{Задачи по математике}
 \setcounter{problem}{0}
 
@@ -332,7 +426,38 @@
 \end{problem}
 
 \begin{problem}
-    //Жду Федю с картинкой про геому 7 класс
+    Найди $\alpha$.
+
+    % Говнокод
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[auto, scale=1, very thick]
+            \tkzDefPoints{0/0/A,4/-2/D};
+            \tkzDefPointBy[rotation=center D angle -108](A);
+            \tkzGetPoint{C};
+            \tkzDefPointBy[rotation=center C angle -48](D);
+            \tkzGetPoint{B};
+
+            % \fill[fill=orange, fill opacity=0.2] (A) -- (B) -- (C) -- (D) -- cycle;
+
+            \tkzMarkSegments[pos=0.5, mark=|](B,C C,D A,D);
+            \tkzFillAngles[mark=none, size=0.5, fill=white](A,B,C B,C,D C,D,A);
+
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=blue](A,B,C);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=orange](B,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=0.55, draw=orange](B,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=orange](C,D,A);
+
+            \tkzDrawPoints(A, B, C, D);
+            \tkzLabelPoints[below](A, D);
+            \tkzLabelPoints[above](B, C);
+            \tkzLabelAngle[dist=0.85](A,B,C){\small $\alpha$};
+            \tkzLabelAngle(B,C,D){\small $48^{\circ}$};
+            \tkzLabelAngle(C,D,A){\small $108^{\circ}$};
+            \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+        \end{tikzpicture}
+    \end{figure}
 \end{problem}
 
 \begin{problem}
@@ -341,18 +466,58 @@
 \end{problem}
 
 \begin{problem}
-    //Жду Федю с картинкой про геому 4 решения
+    Найди $\alpha$.
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[auto, scale=0.75, very thick]
+            \tkzDefPoints{0/0/A,0/4/B};
+            \tkzDefPointBy[rotation=center B angle 140](A);
+            \tkzGetPoint{C'};
+            \tkzDefPointBy[homothety=center B ratio 1.8](C');
+            \tkzGetPoint{C};
+            \tkzDefPointBy[rotation=center C angle 40](B);
+            \tkzGetPoint{D};
+
+            % \fill[fill=orange, fill opacity=0.2] (A) -- (B) -- (C) -- (D) -- cycle;
+
+            \tkzMarkSegments[pos=0.5, mark=|](B,C C,D);
+            \tkzFillAngles[mark=none, size=0.5, fill=white](C,A,B A,C,D);
+            \tkzFillAngle[mark=none, size=0.75, fill=white](D,A,C);
+            \tkzFillAngle[mark=none, size=1.5, fill=white](B,C,A);
+
+            \tkzMarkAngle[arc=l, mark=none, size=0.5 * 2, draw=blue](C,A,B);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5 * 2, draw=blue](A,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=1.5 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=1.55 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=1.6 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=0.75 * 2, draw=orange](D,A,C);
+            \tkzMarkAngle[arc=l, mark=none, size=0.8 * 2, draw=orange](D,A,C);
+
+            \tkzDrawPoints(A, B, C, D);
+            \tkzLabelPoints[below](A, D);
+            \tkzLabelPoints[above](B, C);
+            \tkzLabelAngle[dist=1.15 * 1.75](C,A,B){\small $3\alpha$};
+            \tkzLabelAngle[dist=1.15 * 1.75](A,C,D){\small $3\alpha$};
+            \tkzLabelAngle[dist=1.25 * 1.75](D,A,C){\small $5\alpha$};
+            \tkzLabelAngle[dist=4](B,C,A){\small $\alpha$};
+
+            \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+            \draw[thick] (A) -- (C);
+        \end{tikzpicture}
+    \end{figure}
 \end{problem}
 
 \begin{problem}
-    \textbf{Ральный кейс.}
+    \textbf{Реальный кейс.}
 
-    Открывает первокурсник задавальник \sout{, а он ему как раз}
+    Открывает первокурсник задавальник, \sout{а он ему как раз}
     и видит такую задачу: <<Почему $\sqrt{2}$ иррационально?>>
 \end{problem}
 
 \begin{problem}
-    \begin{multicols*}{2}
+    \begin{multicols}{2}
         Из 9 аксиом поля действительных чисел вывести следующее:
         {
             \renewcommand{\labelenumi}{\alph{enumi})}
@@ -404,7 +569,7 @@
         }
 
         % \includegraphics[width=0.46\textwidth]{img/ax.jpeg}
-      \end{multicols*}
+      \end{multicols}
 \end{problem}
 
 \begin{problem}
@@ -725,7 +890,7 @@
     \lim_{n\to\infty}{\alpha_n} = 0 \Rightarrow 0 =
     \lim_{n\to\infty}{\sqrt[n]{n} - 1} = \lim_{n\to\infty}
     {\sqrt[n]{n}} - 1 \Rightarrow \lim_{n\to\infty}
-    {\sqrt[n]{n}} = 1\].
+    {\sqrt[n]{n}} = 1.\]
 
     \textbf{Ч.Т.Д.}
 \end{problem}
@@ -734,7 +899,7 @@
     Два случая:
     \renewcommand{\labelenumi}{\alph{enumi})}
     \begin{enumerate}
-        \item $x \in \Q$, т.е. x представим в виде несократимой дроби. 
+        \item $x \in \Q$, т.е. $x$ представим в виде несократимой дроби. 
         
         Начиная с какого-то $m', m!$ начнет перебивать знаменатель $x$, 
         тогда под косинусом будет целое кол-во $\pi$, тогда косинус равен
