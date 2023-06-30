@@ -91,7 +91,7 @@
 \usepackage{tikz-cd}
 \usepackage{tkz-euclide}
 \usepackage{stackengine}
-\usetikzlibrary{arrows, angles, babel, quotes, patterns, patterns.meta, shapes.geometric}
+\usetikzlibrary{arrows, angles, babel, quotes, patterns, patterns.meta, positioning, shapes.geometric}
 
 \usepackage{float} % костыль, но сорри
 
@@ -171,8 +171,6 @@
     Однако возвращаться в уже посещенную ими ноду категорически 
     запрещено. Как им лучше поступить?
 
-    \textit{Предложить решение за линию.}
-
     \begin{figure}[H]
         \centering
 
@@ -206,6 +204,8 @@
 
         \end{tikzpicture}
     \end{figure}
+
+    \textit{Предложить решение за линию.}
 
 \end{problem}
 
@@ -262,22 +262,22 @@
             node distance=1.5cm, thick,
             main node/.style={circle,draw,font=\sffamily\small\bfseries}]
 
-        % Nodes
-        \node[main node] (1) {1};
-        \node[main node] (2) [right of=1] {4};
-        \node[main node] (3) [right of=2] {2};
-        \node[main node] (4) [right of=0.5cm of 3, above=0.75cm of 3] {3};
-        \node[main node] (5) [right of=0.5cm of 4, below=0.75cm of 4] {5};
-        \node[main node] (6) [right of=0.5cm of 3, below=0.75cm of 3] {6};
+            % Nodes
+            \node[main node] (1) {1};
+            \node[main node] (2) [right of=1] {4};
+            \node[main node] (3) [right of=2] {2};
+            \node[main node] (4) [right of=0.5cm of 3, above=0.75cm of 3] {3};
+            \node[main node] (5) [right of=0.5cm of 4, below=0.75cm of 4] {5};
+            \node[main node] (6) [right of=0.5cm of 3, below=0.75cm of 3] {6};
 
-        % Edges
-        \path[every node/.style={font=\sffamily\small}]
-        (1) edge (2)
-        (2) edge (3)
-        (3) edge (4)
-        (4) edge (5)
-        (5) edge (6)
-        (6) edge (3);
+            % Edges
+            \path[every node/.style={font=\sffamily\small}]
+            (1) edge (2)
+            (2) edge (3)
+            (3) edge (4)
+            (4) edge (5)
+            (5) edge (6)
+            (6) edge (3);
 
         \end{tikzpicture}
 
@@ -355,19 +355,28 @@
 \begin{problem}
     \textbf{Infinity Train}
 
-    Представь замкнутую по окружности железную дорогу. 
-    По ней едет поезд, последний вагон которого скреплён с первым так, 
-    что внутри можно свободно перемещаться между вагонами. 
-    Ты оказался в каком-то случайном вагоне и твоя задача — \textit{посчитать 
-    их общее количество}. В каждом вагоне можно включать или выключать 
-    свет, но начальное положение переключателей случайное и заранее неизвестно.
+    \textit{Начало триллера:} ты просыпаешься в темном-темном вагоне,
+    видишь перед собой выключатель. Как только ты перевел его в положение
+    вкл., проверяешь карманы, находишь жухлую бумажку, на которой 
+    крупными буквами написано КАФЕДРА ВЫСШЕЙ МАТЕМАТИКИ ПРЕДСТАВЛЯЕТ\dots\
+    Далее по тексту ты понимаешь, что оказался здесь не просто так.
+    Это все один огромной эксперимент, целью которого является выяснение
+    работы мозга студента, который отлетел на пересдачу. И этим испытанием
+    он либо покажет, что достоин прийти на комиссию и все сдать, либо с 
+    позором покинет стены родного уже для него вуза и отправится к себе домой.
+    Перед ним поставлена задача посчитать \textit{количество вагонов 
+    в поезде}. В бумажке было написано, что железная дорога точно кольцевая,
+    как и сам поезд (первый вагон скреплен с первым, т.е. переходы между
+    ними бесшовные). Передвигаться студент может вперед-назад по вагонам,
+    а в них уже выключать или выключать свет (изначальное положение тумблеров
+    в каждом вагоне случайно).
 
     Все вагоны внутри выглядят одинаково, окна закрыты так, что невозможно 
     посмотреть наружу, движение поезда равномерное. Помечать вагоны как-либо, 
     кроме включения или выключения света, нельзя. 
     Количество вагонов конечно (не верьте заголовку).
 
-    \textit{Придумать решение за линию.}
+    \textit{Предложить решение за линию.}
 \end{problem}
 
 \subsection*{Задачи по математике}
@@ -426,9 +435,8 @@
 \end{problem}
 
 \begin{problem}
-    Найди $\alpha$.
+    \phantom.
 
-    % Говнокод
     \begin{figure}[H]
         \centering
 
@@ -452,7 +460,7 @@
             \tkzDrawPoints(A, B, C, D);
             \tkzLabelPoints[below](A, D);
             \tkzLabelPoints[above](B, C);
-            \tkzLabelAngle[dist=0.85](A,B,C){\small $\alpha$};
+            \tkzLabelAngle[dist=0.85](A,B,C){\small $\alpha =\ ?$};
             \tkzLabelAngle(B,C,D){\small $48^{\circ}$};
             \tkzLabelAngle(C,D,A){\small $108^{\circ}$};
             \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
@@ -465,8 +473,9 @@
     \sqrt{4^x + 9^x +1} \cdot \sqrt{13x^2 + 1}.$
 \end{problem}
 
+\newpage
 \begin{problem}
-    Найди $\alpha$.
+    $x =\ ?$
 
     \begin{figure}[H]
         \centering
@@ -498,10 +507,10 @@
             \tkzDrawPoints(A, B, C, D);
             \tkzLabelPoints[below](A, D);
             \tkzLabelPoints[above](B, C);
-            \tkzLabelAngle[dist=1.15 * 1.75](C,A,B){\small $3\alpha$};
-            \tkzLabelAngle[dist=1.15 * 1.75](A,C,D){\small $3\alpha$};
-            \tkzLabelAngle[dist=1.25 * 1.75](D,A,C){\small $5\alpha$};
-            \tkzLabelAngle[dist=4](B,C,A){\small $\alpha$};
+            \tkzLabelAngle[dist=1.15 * 1.75](C,A,B){\small $3x$};
+            \tkzLabelAngle[dist=1.15 * 1.75](A,C,D){\small $3x$};
+            \tkzLabelAngle[dist=1.25 * 1.75](D,A,C){\small $5x$};
+            \tkzLabelAngle[dist=4](B,C,A){\small $x$};
 
             \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
             \draw[thick] (A) -- (C);
@@ -785,7 +794,6 @@
     (4 \cdot 2^{n - 1} - 1) + N < 4N + N = 5N\]
 \end{problem}
 
-\section*{Решения}
 \subsection*{Математика}
 \setcounter{problem}{0}
 
@@ -823,7 +831,34 @@
 \end{problem}
 
 \begin{problem}
-    жду задачу
+    Так-то задача предполагалсь для 7 класса. Решений можно придумать много,
+    однако я постараюсь привести наиболее приближенное к 7 классу.
+    
+    Достроим $\triangle BCA'$ -- равносторонний, тогда 
+    \[\angle A'CD = 60^\circ + 48^\circ = 108^\circ = \angle ADC\] 
+    Достроим $AA'$. Получилась равнобедренная трапеция $AA'CD$:
+    \[\angle AA'C = \angle A'AD = 
+    \frac{360^\circ - 2 \cdot 108^\circ}{2} = 72^\circ\] 
+    (а можно через равенство тр-ков, ибо трапеции, насколько
+    мне известно, в 7 классе еще не проходят).
+
+    \[\angle ACD = \angle CAD = \frac{180^\circ - 108^\circ}{2} = 36^\circ,\]
+    \[\angle BCA = 48^\circ - 36^\circ = 12^\circ,\]
+    \[\angle A'CA = 60^\circ + 12^\circ = 72^\circ\]
+    $\Rightarrow \triangle AA'C$ -- равнобедренный, $AA' = AC
+    \Rightarrow \angle A'AC = 36^\circ.$ При этом $\triangle AA'B = 
+    \triangle ACB \Rightarrow \angle ABA' = \angle ABC = \alpha,\ 
+    \angle AA'B = \angle BCA = 12^\circ,\ \angle A'AB = \angle 
+    BAC = \frac{36^\circ}{2} = 18^\circ \Rightarrow \alpha = 180^\circ
+    - 12^\circ - 18^\circ = 150^\circ$.
+
+    Из интересного было только доп построение равностороннего тр-ка.
+
+    \textbf{Самый быстрый II способ:} можно зафигачить симметрию отн. $AB$. Углы так хорошо подобраны
+    (108 -- угол в правильном пятиугольнике), и из появившегося правильного
+    треугольника получаем следующее уравнение: $2 \alpha + 60^\circ
+    = 360^\circ$.
+
 \end{problem}
 
 \begin{problem}
@@ -838,7 +873,25 @@
 \end{problem}
 
 \begin{problem}
-    жду задачу
+    \textit{I способ (максимально алгебраичный):} запишем 2 теоремы синусов:
+    $AC = a, BC = CD = b$
+    \[\frac{a}{\sin 4x} = \frac{b}{\sin 3x},\ 
+    \frac{a}{\sin 8x} = \frac{b}{\sin 5x}\]
+    \[\sin 3x \cdot 2 \sin 4x \cos 4x = \sin 3x \sin 8x = \sin 4x \sin 5x\]
+    \[\sin 7x - \sin x = 2\sin 3x \cos 4x = \sin 5x\]
+    \[\sin 7x - \sin 5x = \sin x\]
+    \[2 \sin x \cos 6x = \sin x \Rightarrow x = 10^\circ.\]
+
+    \textit{II способ (можно потом рассказать школьнику как эталон простоты):}
+    Проведем $AE$ так, чтобы $\angle EAC = x \Rightarrow AE = EC.$ Значит 
+    $\angle BAE = 2x$ и $\angle BEA = 2x$ как внешний $\triangle AEC \Rightarrow
+    AB = BE$; $\triangle BCD$ -- равнобедренный по условию $\Rightarrow 
+    \angle CBD = \angle CDB$, при этом $DC \parallel AB$ (по усл. через равенство 
+    накрест лежащих) $\Rightarrow BD$ -- биссектриса $\angle ABC$.
+    Замечаем, что $\triangle ABD = \triangle DBE$ по двум сторонам и углу м/д ними.
+    $\angle BED = \angle BAD = 8x \Rightarrow AD = DE.$ Но при этом $\angle ECD = 3x + x$.
+    Из $\triangle ECD: \angle EDC = 4x \Rightarrow ED = EC,\ AD = DE,\ AE = EC
+    \Rightarrow AE = ED = DA \Rightarrow x + 5x = 60^\circ,\ x = 10^\circ.$ 
 \end{problem}
 
 \begin{problem}
