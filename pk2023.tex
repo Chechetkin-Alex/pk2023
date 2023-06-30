@@ -1,0 +1,983 @@
+\documentclass[14pt, a4paper]{extarticle}
+
+\usepackage{cmap}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{indentfirst}
+\frenchspacing
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
+\usepackage{icomma}
+
+\usepackage{centernot}
+\usepackage{stmaryrd}
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\ensuremath{\varnothing}}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{array, tabularx, tabulary, booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem*{exercise}{Упражнение}
+\newtheorem{problem}{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Решение}
+
+\usepackage{geometry}
+\usepackage{setspace}
+% \usepackage{enumitem}
+\usepackage[inline]{enumitem}
+\setlist{leftmargin=25pt}
+
+\geometry{top=20mm}
+\geometry{bottom=15mm}
+\geometry{left=15mm}
+\geometry{right=15mm}
+
+\setlength\parindent{15pt}
+\linespread{1.3}
+
+\usepackage{multicol}
+\usepackage{soulutf8}
+
+\usepackage{microtype}
+
+\usepackage{tocloft}
+
+\makeatletter
+\def\eqref{\@ifstar\@eqref\@@eqref}
+\def\@eqref#1{\textup{\tagform@{\ref*{#1}}}}
+\def\@@eqref#1{\textup{\tagform@{\ref{#1}}}}
+\makeatother
+\numberwithin{equation}{section}
+\mathtoolsset{showonlyrefs=false}
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{
+    unicode=true,
+    colorlinks=true,
+    linkcolor=black!15!blue,
+    citecolor=green,
+    filecolor=magenta,
+    urlcolor=NavyBlue,
+}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tkz-euclide}
+\usepackage{stackengine}
+\usetikzlibrary{arrows, angles, babel, quotes, patterns, patterns.meta, positioning, shapes.geometric}
+
+\usepackage{float} % костыль, но сорри
+
+% \usepackage{paratype}
+% \usepackage{euler}
+
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{listings}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\href{https://vk.com/pr0st0_sasha}{Автор}}
+\fancyhead[L]{\href{https://t.me/argumentofperiapsis}{\small \TeXподдержка}}
+\chead{\textbf{Приемка ФПМИ 2023}}
+
+\setlength{\headheight}{17pt}
+
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
+}
+
+\begin{document}
+
+\subsection*{Задачи по информатике}
+
+\begin{problem}
+    Дан отсортированный массив целых чисел, вывести 
+    отсортированный массив их квадратов.
+\end{problem}
+
+\begin{problem}
+    Построй очередь на двух стеках.
+\end{problem}
+
+\begin{problem}
+    Двое играют в игру: нужно по очереди класть на прямоугольный
+    стол пятирублевые моненты. Если один не может положить 
+    монету, то победа засчитывается второму.
+
+    Может ли какой-то из игроков гарантированно победить? Если может,
+    то предложи стратегию.
+\end{problem}
+
+\begin{problem}
+    \textit{Студент1} и \textit{Студент2} прогневали правителя
+    здешних земель --- А.Д. Поселочного. Им грозит смертная казнь.
+    Однако властитель оказался милосердный. Он предложил
+    им следующее: их ведут в темницу и разводят по одиночным камерам,
+    там они бросают монетку, а далее каждый должен сказать,
+    что выпало у товарища. Если хотя бы один угадывает, их отпускают, 
+    иначе ...
+
+    У товарищей есть пару минут, пока их ведут в камеры, чтобы 
+    обсудить стратегию. Итак вопрос: смогут ли они гарантированно выйти
+    живыми и невредимыми?
+\end{problem}
+
+\begin{problem}
+    1,5 землекопа из \textit{страны невыученных уроков} копали-копали яму
+    и вдруг наткнулись на какой-то корешок. Пригляделись внимательно,
+    куда он ведет, и увидели огромное бинарное дерево. И, по всем канонам
+    этой чудесной страны, дерево оказалось не простым, а золотым 
+    (каждая его нода
+    содержала \textit{целое} количество золота). Они решили пройтись 
+    по дереву и по максимуму собрать золота. Они могут
+    стартовать в любой ноде, а дальше двигаться вперед или назад. 
+    Однако возвращаться в уже посещенную ими ноду категорически 
+    запрещено. Как им лучше поступить?
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,
+            node distance=2.5cm, thick,
+            main node/.style={draw,font=\sffamily\small\bfseries},
+            edge from parent/.style={draw,->},
+            level distance=2cm,
+            level/.style={sibling distance=6cm/#1},
+            child anchor=north, scale=0.75]
+
+            \node[main node, ellipse] {-10}
+                child { node[main node, circle] {9} }
+                child {
+                    node[main node, circle] {20}
+                        child {
+                            node[main node, circle] {-3}
+                            child {
+                                node[main node, circle] {5}
+                                child { node[main node, circle] {-2} }
+                                child[missing]
+                            }
+                            child { node[main node, circle] {-4} }
+                        }
+                        child {
+                            node[main node, circle] {8}
+                            child[missing]
+                            child { node[main node, circle] {-2} }
+                        }
+                };
+
+        \end{tikzpicture}
+    \end{figure}
+
+    \textit{Предложить решение за линию.}
+
+\end{problem}
+
+\begin{problem}
+    Принц-Полукровка оставил в своем учебнике по зельеварению 
+    огромное число подсказок и заметок. Одна из заметок содержала 
+    "Закон несохранения массы". Далее идет ее текст.
+
+    \textit{Посмотрим на веса каждого из ингредиентов в рецепте и 
+    каждому из них сопоставим столбик единичной ширины и высоты, 
+    равной числу граммов соответствующего ингредиента. 
+    Выровняем их снизу по одной линии и получим "гистограмму 
+    ингредиентов". Тогда масса полученного зелья будет равняться 
+    площади самого большого прямоугольника в гистограмме, одна 
+    из сторон которого лежит на общей нижней линии.}
+
+    Найди площадь самого большого прямоугольника в гистограмме. 
+    Помни, что этот прямоугольник должен быть на общей базовой линии.
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,thick]
+
+            \draw (0, 0) rectangle +(2, 2);
+            \draw (2, 0) rectangle +(2, 1);
+            \draw (4, 0) rectangle +(2, 5);
+            \draw (6, 0) rectangle +(2, 6);
+            \draw (8, 0) rectangle +(2, 2);
+            \draw (10, 0) rectangle +(2, 3);
+
+            \node[font=\sffamily\large\bfseries, anchor=south] at (1, 2) {2};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (3, 1) {1};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (5, 5) {5};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (7, 6) {6};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (9, 2) {2};
+            \node[font=\sffamily\large\bfseries, anchor=south] at (11, 3) {3};
+
+            \path[pattern={Lines[angle=45, distance={3mm/sqrt(2)}]}] (4, 0) rectangle +(4, 5);
+        \end{tikzpicture}
+
+    \end{figure}
+\end{problem}
+
+\begin{problem}
+    Есть односвязный список, состоящий из различных значений. 
+    Возможно в нем есть цикл. Опиши алгоритм, который находит
+    начало этого цикла, а если цикла нет --- выводит $-1$.
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
+
+            % Nodes
+            \node[main node] (1) {1};
+            \node[main node] (2) [right of=1] {4};
+            \node[main node] (3) [right of=2] {2};
+            \node[main node] (4) [right of=0.5cm of 3, above=0.75cm of 3] {3};
+            \node[main node] (5) [right of=0.5cm of 4, below=0.75cm of 4] {5};
+            \node[main node] (6) [right of=0.5cm of 3, below=0.75cm of 3] {6};
+
+            % Edges
+            \path[every node/.style={font=\sffamily\small}]
+            (1) edge (2)
+            (2) edge (3)
+            (3) edge (4)
+            (4) edge (5)
+            (5) edge (6)
+            (6) edge (3);
+
+        \end{tikzpicture}
+
+        \vspace{0.5cm}
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
+
+            \begin{scope}
+                \node[main node] (1) [circle, draw] {1};
+                \node[main node] (3) [right of=1] {3};
+                \node[main node] (2) [right of=3] {2};
+                \node[main node] (null) [right of=2, color=red, ellipse] {null};
+            \end{scope}
+
+            \path[every node/.style={font=\sffamily\small}]
+            (1) edge (3)
+            (3) edge (2)
+            (2) edge (null);
+        \end{tikzpicture}
+
+        \vspace{0.5cm}
+
+        \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,scale=0.5,
+            node distance=1.5cm, thick,
+            main node/.style={circle,draw,font=\sffamily\small\bfseries}]
+
+            \begin{scope}
+                \node[main node] (1) [circle, draw] {1};
+                \node[main node] (3) [above right of=1] [circle, draw] {3};
+                \node[main node] (4) [below right of=3]  [circle, draw] {4};
+                \node[main node] (2) [below left of=4]  [circle, draw] {2};
+            \end{scope}
+
+            \draw [->] (1) -- (3);
+            \draw [->] (3) -- (4);
+            \draw [->] (4) -- (2);
+            \draw [->] (2) -- (1);
+        \end{tikzpicture}
+    \end{figure}
+\end{problem}
+
+\begin{problem}
+    Вагоны новой кольцевой железной дороги было предложено расписать 
+    $N$ дизайнерам. Каждый дизайнер выбирал для своей раскраски полосу 
+    длиной $L_i$, начинающуюся от начала вагона и гарантированно 
+    помещающуюся на вагоне. Тем самым какие-то работы были полностью 
+    закрашены, а какие-то всё же были видны хотя бы частично.
+
+    Тебе дана последовательность перекраски. После завершения работы 
+    каждого дизайнера выведи одно число — количество различных работ, 
+    элементы которых видны на момент завершения.
+
+    \textit{Предложить решение за линию.}
+\end{problem}
+
+\begin{problem}
+    \textbf{Король и вино.}
+
+    Представь, ты --- король, и у тебя завтра день рождения. По такому случаю ты устраиваешь
+    вечеринку! Но какая же вечеринка может обойтись без открытия винного погреба?)
+    И вот ты спускаешься в свой погреб и обнаруживаешь в нем ... записку, в которой говорится,
+    что одна из 1000 бутылок вина отравлена. Яд этот очень опасный и всего одна его капля
+    способна убить человека всего за 15-20 часов. И всё бы было не так плохо, да вот до праздника
+    остается всего один день! 
+    
+    Подвергать риску себя и своих гостей ты не можешь, зато у тебя 
+    в темнице множество узников, которые ждут своей казни. И ты решаешь дать им вина,
+    чтобы вычислить отравленную бутылку. Человек ты сердобольный, поэтому тебе хочется подвергнуть
+    риску как можно меньшее количество заключённых. Вопрос: какое минимальное количество 
+    заключённых должно попробовать вино из бутылок, чтобы точно найти отравленную в течение 24 часов?
+\end{problem}
+
+\begin{problem}
+    \textbf{Infinity Train}
+
+    \textit{Начало триллера:} ты просыпаешься в темном-темном вагоне,
+    видишь перед собой выключатель. Как только ты перевел его в положение
+    вкл., проверяешь карманы, находишь жухлую бумажку, на которой 
+    крупными буквами написано КАФЕДРА ВЫСШЕЙ МАТЕМАТИКИ ПРЕДСТАВЛЯЕТ\dots\
+    Далее по тексту ты понимаешь, что оказался здесь не просто так.
+    Это все один огромной эксперимент, целью которого является выяснение
+    работы мозга студента, который отлетел на пересдачу. И этим испытанием
+    он либо покажет, что достоин прийти на комиссию и все сдать, либо с 
+    позором покинет стены родного уже для него вуза и отправится к себе домой.
+    Перед ним поставлена задача посчитать \textit{количество вагонов 
+    в поезде}. В бумажке было написано, что железная дорога точно кольцевая,
+    как и сам поезд (первый вагон скреплен с первым, т.е. переходы между
+    ними бесшовные). Передвигаться студент может вперед-назад по вагонам,
+    а в них уже выключать или выключать свет (изначальное положение тумблеров
+    в каждом вагоне случайно).
+
+    Все вагоны внутри выглядят одинаково, окна закрыты так, что невозможно 
+    посмотреть наружу, движение поезда равномерное. Помечать вагоны как-либо, 
+    кроме включения или выключения света, нельзя. 
+    Количество вагонов конечно (не верьте заголовку).
+
+    \textit{Предложить решение за линию.}
+\end{problem}
+
+\subsection*{Задачи по математике}
+\setcounter{problem}{0}
+
+\begin{problem}
+    Можно ли торт 3 разрезами поделить на 8 частей.
+\end{problem}
+
+\begin{problem}
+    В кубической комнате со стороной 2 летают 9 мух. 
+    Докажи, что найдется хотя бы одна пара мух, 
+    находящихся на расстоянии не большем $\sqrt{3}$.
+\end{problem}
+
+\begin{problem}
+    У шахматной доски отрезали два противолежащих уголка.
+    Можно ли теперь покрыть ее доминошками (по структуре они
+    наполовину черные, наполовину белые)?
+\end{problem}
+
+\begin{problem}
+    Решить $3\sqrt{4x - 5y + 7} +
+    5|3x - 4y + 6| \leqslant 4$, где $x, y \in \Z$.
+    В ответе указать $\max(x+y)$.
+\end{problem}
+
+\begin{problem}
+    \textbf{Читать голосом Александра Пушного.}
+
+    В эфире самая смешивательная среди взбалтывательных и самая
+    взбалтывательная среди смешивательных рубрик программы <<Галилео>>, 
+    которая называется ЭЭЭЭЭЭКСПЕРИМЕНТЫ.
+    
+    Друзья, смотрите, мы берем две совершенно одинаковые кружки.
+    В одной из них молоко, в другой --- кофе (в одинаковых количествах). 
+    Переливаем ложку молока в кофе, перемешаем, 
+    а затем обратно переливаем ложку получившейся смеси в стакан с молоком. 
+    Итак, наши внимательные зрители, чего же у нас оказалось больше:
+    молока в кофе или кофе в молоке?
+
+    \textit{Подсказка}. Можешь для начала решить следующую задачу:
+
+    На главную туристическую площадь приехали два туристических 
+    автобуса. Все места в каждом из автобусов были заняты. 
+    В первом автобусе находилось 20 польских 
+    туристов, во втором --- 20 чешских. Во время экскурсии 
+    начался ливень, и туристы бросились в автобусы, не разбирая, где чей. 
+    Кого больше: чешских туристов в польском автобусе или польских 
+    туристов в чешском?
+\end{problem}
+
+\begin{problem}
+    Существует ли такой $x$, что $\tg(x) + \sqrt{3}$ и 
+    $\ctg(x) + \sqrt{3}$ целые числа?
+\end{problem}
+
+\begin{problem}
+    \phantom.
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[auto, scale=1, very thick]
+            \tkzDefPoints{0/0/A,4/-2/D};
+            \tkzDefPointBy[rotation=center D angle -108](A);
+            \tkzGetPoint{C};
+            \tkzDefPointBy[rotation=center C angle -48](D);
+            \tkzGetPoint{B};
+
+            % \fill[fill=orange, fill opacity=0.2] (A) -- (B) -- (C) -- (D) -- cycle;
+
+            \tkzMarkSegments[pos=0.5, mark=|](B,C C,D A,D);
+            \tkzFillAngles[mark=none, size=0.5, fill=white](A,B,C B,C,D C,D,A);
+
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=blue](A,B,C);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=orange](B,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=0.55, draw=orange](B,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5, draw=orange](C,D,A);
+
+            \tkzDrawPoints(A, B, C, D);
+            \tkzLabelPoints[below](A, D);
+            \tkzLabelPoints[above](B, C);
+            \tkzLabelAngle[dist=0.85](A,B,C){\small $\alpha =\ ?$};
+            \tkzLabelAngle(B,C,D){\small $48^{\circ}$};
+            \tkzLabelAngle(C,D,A){\small $108^{\circ}$};
+            \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+        \end{tikzpicture}
+    \end{figure}
+\end{problem}
+
+\begin{problem}
+    Решить $2x \cdot 2^x + 3x \cdot 3^x + 1 \geqslant 
+    \sqrt{4^x + 9^x +1} \cdot \sqrt{13x^2 + 1}.$
+\end{problem}
+
+\newpage
+\begin{problem}
+    $x =\ ?$
+
+    \begin{figure}[H]
+        \centering
+
+        \begin{tikzpicture}[auto, scale=0.75, very thick]
+            \tkzDefPoints{0/0/A,0/4/B};
+            \tkzDefPointBy[rotation=center B angle 140](A);
+            \tkzGetPoint{C'};
+            \tkzDefPointBy[homothety=center B ratio 1.8](C');
+            \tkzGetPoint{C};
+            \tkzDefPointBy[rotation=center C angle 40](B);
+            \tkzGetPoint{D};
+
+            % \fill[fill=orange, fill opacity=0.2] (A) -- (B) -- (C) -- (D) -- cycle;
+
+            \tkzMarkSegments[pos=0.5, mark=|](B,C C,D);
+            \tkzFillAngles[mark=none, size=0.5, fill=white](C,A,B A,C,D);
+            \tkzFillAngle[mark=none, size=0.75, fill=white](D,A,C);
+            \tkzFillAngle[mark=none, size=1.5, fill=white](B,C,A);
+
+            \tkzMarkAngle[arc=l, mark=none, size=0.5 * 2, draw=blue](C,A,B);
+            \tkzMarkAngle[arc=l, mark=none, size=0.5 * 2, draw=blue](A,C,D);
+            \tkzMarkAngle[arc=l, mark=none, size=1.5 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=1.55 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=1.6 * 2, draw=orange](B,C,A);
+            \tkzMarkAngle[arc=l, mark=none, size=0.75 * 2, draw=orange](D,A,C);
+            \tkzMarkAngle[arc=l, mark=none, size=0.8 * 2, draw=orange](D,A,C);
+
+            \tkzDrawPoints(A, B, C, D);
+            \tkzLabelPoints[below](A, D);
+            \tkzLabelPoints[above](B, C);
+            \tkzLabelAngle[dist=1.15 * 1.75](C,A,B){\small $3x$};
+            \tkzLabelAngle[dist=1.15 * 1.75](A,C,D){\small $3x$};
+            \tkzLabelAngle[dist=1.25 * 1.75](D,A,C){\small $5x$};
+            \tkzLabelAngle[dist=4](B,C,A){\small $x$};
+
+            \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+            \draw[thick] (A) -- (C);
+        \end{tikzpicture}
+    \end{figure}
+\end{problem}
+
+\begin{problem}
+    \textbf{Реальный кейс.}
+
+    Открывает первокурсник задавальник, \sout{а он ему как раз}
+    и видит такую задачу: <<Почему $\sqrt{2}$ иррационально?>>
+\end{problem}
+
+\begin{problem}
+    \begin{multicols}{2}
+        Из 9 аксиом поля действительных чисел вывести следующее:
+        {
+            \renewcommand{\labelenumi}{\alph{enumi})}
+            \singlespacing
+
+            \begin{enumerate}
+            \item $\forall a \in \R \ \exists ! \; (-a)\in \R : a + (-a) = 0;$
+            
+            \item $\forall a \in \R : \ a \cdot 0 = 0;$
+            
+            \item $\forall a \in \R : \ (-1) \cdot a = -a.$
+            \end{enumerate}
+        }
+
+        \columnbreak
+
+        {
+            \renewcommand{\labelenumi}{\theenumi)}
+            \singlespacing
+            % \small
+
+            Аксиомы сложения
+            \newcounter{axiomscounter}
+            \begin{enumerate}
+                \item $\forall a, b \in \R \quad a + b = b + a$;
+                \item $\forall a, b, c \in \R \quad (a + b) + c = a + (b + c)$;
+                \item $\exists 0 \in \R \, \forall a \in \R \quad a + 0 = a$;
+                \item $\forall a \in \R \, \exists (-a) \in \R \quad a + (-a) = 0$.
+
+                \setcounter{axiomscounter}{\theenumi}
+            \end{enumerate}
+
+            Аксиомы умножения
+            \begin{enumerate}
+                \setcounter{enumi}{\theaxiomscounter}
+
+                \item $\forall a, b \in \R \quad a \cdot b = b \cdot a$;
+                \item $\forall a, b, c \in \R \quad (a \cdot b) \cdot c = a \cdot (b \cdot c)$;
+                \item $\exists 1 \in \R \, \forall a \in \R \quad a \cdot 1 = a$;
+                \item $\forall a \in \R \setminus \{0\} \, \exists a^{-1} \in \R \quad a \cdot a^{-1} = 1$.
+                \setcounter{axiomscounter}{\theenumi}
+            \end{enumerate}
+
+            Аксиома связи сложения и умножения
+            \begin{enumerate}
+                \setcounter{enumi}{\theaxiomscounter}
+                \item $\forall a, b, c \in \R \quad a \cdot (b + c) = a \cdot b + a \cdot c$.
+            \end{enumerate}
+        }
+
+        % \includegraphics[width=0.46\textwidth]{img/ax.jpeg}
+      \end{multicols}
+\end{problem}
+
+\begin{problem}
+    Доказать, что $\displaystyle\lim_{n\to\infty}{\sqrt[n]{n}} = 1.$
+\end{problem}
+
+\begin{problem}
+    Доказать, что $D(x) = \displaystyle\lim_{m\to\infty}{\lim_{n\to\infty}
+    {\cos^{2n}(\pi \cdot m! \cdot x)}}$, где $D(x)$ - функция Дирихле.
+\end{problem}
+
+\begin{problem}
+    \textbf{Бонус к первой задаче.}
+
+    Докажите, что в $\R^2$ это невозможно.
+
+    Здесь торт --- связное выпуклое множество в $\R^2$ 
+    с топологией, порождённой евклидовой метрикой.
+\end{problem}
+
+\newpage
+\section*{Решения}
+\subsection*{Информатика}
+\setcounter{problem}{0}
+
+\begin{problem}
+    Идейно: самые большие по модулю числа на концах.
+
+    \textit{leftIndex = 0, rightIndex = n - 1;}
+
+    Дальше сравниваем элементы и записываем в новый массив с конца.
+\end{problem}
+
+\begin{problem}
+    stackIn, stackOut.
+\end{problem}
+
+\begin{problem}
+    Идея симметрии. Первый кладет монету на центр стола, второй кладет
+    куда-то, а задача первого --- симметрично отражать ходы соперника.
+\end{problem}
+
+\begin{problem}
+    \textit{Подсказка.} От чего можно отталкиваться, если не знаешь, 
+    что выпало у соседа?
+
+    \textbf{Решение:} Один говорит, что выпало у него, второй --- 
+    отрицание своего результата.
+\end{problem}
+
+\begin{problem}
+    Через DFS посчитать максимальные пути.
+    \begin{footnotesize}
+        \begin{lstlisting}[language=Java]
+            class Solution {
+                int answer = 0;
+                int maxPathSum(TreeNode root) {
+                    helper (root);
+                    return answer;
+                }
+
+                int helper (TreeNode node) {
+                    if (node == null) {
+                        return 0;
+                    }
+                
+                    int maxLeftPath = Math.max(helper(node.left), 0);
+                    int maxRightPath = Math.max(helper(node.right), 0);
+                    answer = Math.max(answer, maxLeftPath + maxRightPath + node.val);
+                    return Math.max(maxLeftPath, maxRightPath) + node.val;
+                }
+            }
+        \end{lstlisting}
+    \end{footnotesize}
+\end{problem}
+
+\begin{problem}
+    \href{https://youtu.be/zx5Sw9130L0}{Разбор.}
+
+    Первый проход имеет 3 базовых случая:
+    \renewcommand{\labelenumi}{\alph{enumi})}
+    \begin{enumerate}
+        \item Слудующий столбец меньше предыдещего,
+        тогда максимальная площадь --- высота первого столбца.
+        \item Слудующий столбец равна предыдещего, тогда
+        максимальная площадь --- удвоенная высота столбца.
+        \item Слудующий столбец больше предыдещего, тогда
+        максимальная площадь --- высота первого столбца, но
+        продленного дальше.
+    \end{enumerate}
+
+    Тогда сделаем так: заведем два стека, в одном будут лежать индексы
+    столбцов, а во втором их высоты. Будем идти по гистограмме, если 
+    введенный столбец $\geqslant$ предыдущего, то записываем его в стек,
+    обновляем стек индексов. Если же меньше, то попаем из стеков столбцы,
+    при этом считая возможную максимальную площадь, пока не дойдем до 
+    случая $\geqslant$. Индекс у последнего введенного столбца можно 
+    оставить как у последнего попнутого, тк туда мы очевидно можем 
+    продлиться. А после цикла еще раз пробегаемся по непопнутым значениям
+    и считаем возможные макс площади для них (они все образуют строго
+    возрастающую последовательность).\\
+
+    \begin{footnotesize}
+        \begin{lstlisting}[language=Java]
+            public class Task {
+                public static void main(String[] args) throws IOException {
+                    BufferedReader bi = new BufferedReader(
+                        new InputStreamReader(System.in));
+                    PrintWriter pw = new PrintWriter(System.out);
+                    StringTokenizer st = new StringTokenizer(bi.readLine());
+                    Stack<Long> indexes = new Stack<>();
+                    Stack<Long> heights = new Stack<>();
+                    long maxArea = 0;
+                    int N = Integer.parseInt(st.nextToken());
+
+                    for (int i = 1; i <= N; i++) {
+                        long num = Long.parseLong(st.nextToken());
+                        long prevInd = i;
+                        while (!heights.isEmpty() && heights.peek() > num) {
+                            prevInd = indexes.peek();
+                            long area = heights.pop() * (i - indexes.pop());
+                            maxArea = Math.max(maxArea, area);
+                        }
+                        indexes.add(prevInd);
+                        heights.add(num);
+                    }
+
+                    while (!indexes.isEmpty()) {
+                        long area = heights.pop() * (N - indexes.pop() + 1);
+                        maxArea = Math.max(maxArea, area);
+                    }
+
+                    pw.printf("%d", maxArea);
+                    pw.close();
+                }
+            }
+        \end{lstlisting}
+    \end{footnotesize}
+\end{problem}
+
+\begin{problem}
+    Плавно подводим к мысле об использовании двух указателей.
+
+    Подзадача: найти середину связного списка.
+
+    Метод Эзопа: заводим указатель-черепашку, указатель-кролика.
+    У первого скорость $v$, у второго $2v$. Тогда при пробеге через
+    весь список черепашка будет на середине.
+
+    В этой задаче сначала запускаем их, если цикла нет --- ответ.
+    Если есть, то рано или поздно они встретятся где-то в цикле.
+    Если к этому моменту черепашка сделала $i$ шагов, а кролик $2i$,
+    то их позиции совпадают с точностью до целова количества кругов
+    цикла: $2i = i + k \lambda \Rightarrow i = k \lambda$.
+
+    Далее перемещаем один указатель в начало и уравниваем скорости.
+    Утверждается, что если их снова запустить, то встретятся они
+    в начале цикла. Это так, ибо:
+    \begin{enumerate}
+        \item до начала цикла указатель из начала пройдет $j$ шагов. 
+        \item черепашка прошла целое количество
+        циклов $k \lambda$, и тк она стартует из начала списка, то до конца
+        цикла она не проходит аккурат $j$ шагов.
+    \end{enumerate}
+    \textbf{Ч.Т.Д.}
+\end{problem}
+
+\begin{problem}
+    Берем стек. 
+
+    Цикл по дизайнерам:
+    \begin{itemize}[]
+        \item Для очередного значения $L$ снимаем с вершины элементы, пока они $\leqslant L$;
+        \item Вставляем $L$;
+        \item Выводим кол-во элементов стека;
+    \end{itemize}
+\end{problem}
+
+\begin{problem}
+    Подводим к идее пронумеровать все бутылки двоичным кодом, а дальше
+    сделать таблицу, где в столбцах указываются номера бутылок, 
+    соответственно по столбцу пишем их номер в двоичной СС, в строках
+    будут просто наши узники. Тогда дадим одну каплю вина каждому 
+    узнику, если напротив него стоит 1. И тогда по набору умерших узников
+    будет сразу понятно, какая бутылка была отравлена. Никто не умер ---
+    нулевая бутылка.
+\end{problem}
+
+\begin{problem}
+    \textit{I способ (много шагов):} Просыпаемся, ключаем свет,
+    чулночно идти вправо на вагон, выключаем свет, возвращаемся, попутно
+    считая вагоны. Если лмпа в вагоне, где вы точно начали, не горит,
+    значит вы его выключили, тогда ответ.
+
+    Количество шагов в этом случае: 
+    \[1 + 1 + 2 + 2 + ... + N + N = N(N + 1)\]
+
+    \textit{II способ (чуть меньше шагов):} Идти влево --- выключать свет, вправо
+    --- включать свет. Если возвращаемся в вагон, где уже были, но лампочка
+    изменила свое состояние, значит мы ее выключили, тоже приходим в ответ.
+
+    Количество шагов в этом случае: 
+    \[1 + 2 + ... + N + N = \frac{N(N + 3)}{2}\] 
+
+    \textit{III способ (линия):} Стратегия из способа II, однако
+    делаем каждый раз шагов соразмерно степени двойки (1, 2, 4, 8, ...).
+    Если заметили изменение в уже пройденном вагоне, значит длина поезда
+    --- это кол-во всех пройденных за этот обход вагонов без коллизий.
+
+    Количество шагов в этом случае ($2^n$ -- количество шагов, когда мы 
+    перескачили длину поезда, т.е. $2^{n - 1} < N \leqslant 2^n$): 
+    \[1 + 2 + 4 + 8 + ... + 2^n + N = (2^{n + 1} - 1) + N =
+    (4 \cdot 2^{n - 1} - 1) + N < 4N + N = 5N\]
+\end{problem}
+
+\subsection*{Математика}
+\setcounter{problem}{0}
+
+\begin{problem}
+    Да, в $R^3$ крест на крест и по высоте.
+\end{problem}
+
+\begin{problem}
+    Принцип Дирихле: делим на 8 частей, в какой-то две мухи.
+\end{problem}
+
+\begin{problem}
+    Обе клеточки одного цвета $\Rightarrow$ остается 30 белых, 32 черных
+    $\Rightarrow$ не получится.
+\end{problem}
+
+\begin{problem}
+    Замечаем, что модуль и корень неотрицательны, а под модулем 
+    целое число, значит под модулем только 0. Помня про равносильные
+    переходы и $y \divby 3$ получаем ответ: 6 + 6 = \textit{12}.
+\end{problem}
+
+\begin{problem}
+    \textit{Решение подзадачи:} обозначаем часть туристов за $x$ и понимаем,
+    что их будет поровну в каждом автобусе.
+
+    \textit{Решение задачи:} тот же ответ, можно через неизвестную,
+    а можно рукомахательно это показать.
+\end{problem}
+
+\begin{problem}
+    Пусть существуют, тогда из предположения приравниваем $\tg x$ и получаем
+    дробь, которая должна являться рациональной, однако равна $\sqrt{3}
+    \Rightarrow$ противоречие.
+\end{problem}
+
+\begin{problem}
+    Так-то задача предполагалсь для 7 класса. Решений можно придумать много,
+    однако я постараюсь привести наиболее приближенное к 7 классу.
+    
+    Достроим $\triangle BCA'$ -- равносторонний, тогда 
+    \[\angle A'CD = 60^\circ + 48^\circ = 108^\circ = \angle ADC\] 
+    Достроим $AA'$. Получилась равнобедренная трапеция $AA'CD$:
+    \[\angle AA'C = \angle A'AD = 
+    \frac{360^\circ - 2 \cdot 108^\circ}{2} = 72^\circ\] 
+    (а можно через равенство тр-ков, ибо трапеции, насколько
+    мне известно, в 7 классе еще не проходят).
+
+    \[\angle ACD = \angle CAD = \frac{180^\circ - 108^\circ}{2} = 36^\circ,\]
+    \[\angle BCA = 48^\circ - 36^\circ = 12^\circ,\]
+    \[\angle A'CA = 60^\circ + 12^\circ = 72^\circ\]
+    $\Rightarrow \triangle AA'C$ -- равнобедренный, $AA' = AC
+    \Rightarrow \angle A'AC = 36^\circ.$ При этом $\triangle AA'B = 
+    \triangle ACB \Rightarrow \angle ABA' = \angle ABC = \alpha,\ 
+    \angle AA'B = \angle BCA = 12^\circ,\ \angle A'AB = \angle 
+    BAC = \frac{36^\circ}{2} = 18^\circ \Rightarrow \alpha = 180^\circ
+    - 12^\circ - 18^\circ = 150^\circ$.
+
+    Из интересного было только доп построение равностороннего тр-ка.
+
+    \textbf{Самый быстрый II способ:} можно зафигачить симметрию отн. $AB$. Углы так хорошо подобраны
+    (108 -- угол в правильном пятиугольнике), и из появившегося правильного
+    треугольника получаем следующее уравнение: $2 \alpha + 60^\circ
+    = 360^\circ$.
+
+\end{problem}
+
+\begin{problem}
+    Заметим, что тут фигурируют два вектора: $\vec{x} = (2x, 3x, 1),
+    \vec{y} = (2^x, 3^x, 1)$.
+
+    Неравенство Коши-Буняковского: $(\vec{x}, \vec{y})^2 \leqslant
+    (\vec{x}, \vec{x}) \cdot (\vec{y}, \vec{y})$.
+
+    А тут неравенство в обратную сторону, значит достигается равенство,
+    а тогда векторы коллинеарны. Однако таких векторов не найдется.
+\end{problem}
+
+\begin{problem}
+    \textit{I способ (максимально алгебраичный):} запишем 2 теоремы синусов:
+    $AC = a, BC = CD = b$
+    \[\frac{a}{\sin 4x} = \frac{b}{\sin 3x},\ 
+    \frac{a}{\sin 8x} = \frac{b}{\sin 5x}\]
+    \[\sin 3x \cdot 2 \sin 4x \cos 4x = \sin 3x \sin 8x = \sin 4x \sin 5x\]
+    \[\sin 7x - \sin x = 2\sin 3x \cos 4x = \sin 5x\]
+    \[\sin 7x - \sin 5x = \sin x\]
+    \[2 \sin x \cos 6x = \sin x \Rightarrow x = 10^\circ.\]
+
+    \textit{II способ (можно потом рассказать школьнику как эталон простоты):}
+    Проведем $AE$ так, чтобы $\angle EAC = x \Rightarrow AE = EC.$ Значит 
+    $\angle BAE = 2x$ и $\angle BEA = 2x$ как внешний $\triangle AEC \Rightarrow
+    AB = BE$; $\triangle BCD$ -- равнобедренный по условию $\Rightarrow 
+    \angle CBD = \angle CDB$, при этом $DC \parallel AB$ (по усл. через равенство 
+    накрест лежащих) $\Rightarrow BD$ -- биссектриса $\angle ABC$.
+    Замечаем, что $\triangle ABD = \triangle DBE$ по двум сторонам и углу м/д ними.
+    $\angle BED = \angle BAD = 8x \Rightarrow AD = DE.$ Но при этом $\angle ECD = 3x + x$.
+    Из $\triangle ECD: \angle EDC = 4x \Rightarrow ED = EC,\ AD = DE,\ AE = EC
+    \Rightarrow AE = ED = DA \Rightarrow x + 5x = 60^\circ,\ x = 10^\circ.$ 
+\end{problem}
+
+\begin{problem}
+    Этот кейс был у пекусов ЛФИ :)
+
+    Можно \href{https://youtu.be/SSUCYC-nF6g}{арифметически}.
+
+    Можно через \href{https://youtu.be/UdVr4Ak-E78}{теорему Безу}.
+
+    Можно \href{https://youtu.be/-Gik7bfQxDM}{графически} через наименьшие стороны квадратов.
+\end{problem}
+
+\begin{problem}
+    \renewcommand{\labelenumi}{\alph{enumi})}
+    \begin{enumerate}
+        \item От противного. Пусть $\exists a_1 \neq a_2$ противоположные к $a$.
+        
+        $a_1 = a_1 + 0 = a_1 + (a + a_2) = (a_1 + a) + a_2 = 0 + a_2 = a_2$.
+        Противоречие.
+        
+        \item $0 \cdot a + 0 = 0 \cdot a + (a + (-a)) = (0 \cdot a + a) + (-a) = 
+        (0 + 1) \cdot a + (-a) = a + (-a) = 0$.
+        
+        \item $(-1) \cdot a + a = (-1 + 1) \cdot a = 0 \cdot a = 0 \Rightarrow (-1) \cdot a = -a$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Докажем вспомогательное неравенство (*):
+    \[(1 + x)^n = \sum_{k = 1}^{n} C_n^2 x^k 1^{n-k} \geqslant 
+    C_n^2 x^2 = \frac{n(n - 1)}{2} \cdot x^2 \geqslant 
+    \frac{n^2}{4} \cdot x^2\]
+    Последнее верно в силу оценки:
+    \[n \geqslant 2;\ n - 2 \geqslant 0;\ 2n - 2 \geqslant n;\ 
+    n - 1 \geqslant \frac{n}{2}\]
+    Само неравенство верно при $ n \in \N,\ n \geqslant 2,\ x > 0$.
+
+    Возвращаемся к задаче. Сразу базовый кейс: при $n = 1$ --- очев.
+
+    {
+        \newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{*}}}{\geqslant}}
+        Положим $\alpha_n = \sqrt[n]{n} - 1 \Rightarrow n = (1 + 
+        \alpha_n)^n \myeq \frac{n^2 \alpha_n^2}{4} \Rightarrow 1 \geqslant \frac{n \alpha_n^2}{4}$.
+    }
+
+    Отсюда явным образом  $0 \leqslant \alpha_n \leqslant \frac{2}{\sqrt{n}}$. 
+    По теореме о двух миллиционерах 
+    \[
+    \lim_{n\to\infty}{\alpha_n} = 0 \Rightarrow 0 =
+    \lim_{n\to\infty}{\sqrt[n]{n} - 1} = \lim_{n\to\infty}
+    {\sqrt[n]{n}} - 1 \Rightarrow \lim_{n\to\infty}
+    {\sqrt[n]{n}} = 1.\]
+
+    \textbf{Ч.Т.Д.}
+\end{problem}
+
+\begin{problem}
+    Два случая:
+    \renewcommand{\labelenumi}{\alph{enumi})}
+    \begin{enumerate}
+        \item $x \in \Q$, т.е. $x$ представим в виде несократимой дроби. 
+        
+        Начиная с какого-то $m', m!$ начнет перебивать знаменатель $x$, 
+        тогда под косинусом будет целое кол-во $\pi$, тогда косинус равен
+        $\pm 1$, а он еще в степени $2n \Rightarrow D(x) = 1$.
+
+        \item $x \not\in \Q$.
+        
+        Тогда очев $D(x) = 0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    \textit{За доказательство пойдет полный перебор случаев}.
+    Тут абитуру должны испугать \textit{страшные слова}.
+
+    Во-первых, нам важно, что торт выпуклый. Тогда рассмотрим первые два разреза.
+    Они могут иметь 0 или одну общую точку (совпадение выкидываем).
+
+    Если 0 (при параллельности), то можно получить 4 (все параллельны)
+    или 6 (две параллельны и 1 пересекает). 
+    
+    Если одна, то либо пересечение с обоими разрезами, 
+    тогда 6 или 7.
+
+    Рассмотрели все случаи.
+\end{problem}
+
+\end{document}
